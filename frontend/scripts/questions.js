@@ -112,3 +112,41 @@ function viewQuestion(qn_id) {
         })
         .catch((err) => console.log(err))
 }
+
+//posting an answer to a question
+document.getElementById("postanswer").addEventListener("submit", postAnswer);
+
+function postAnswer(e) {
+    e.preventDefault();
+    let Answer = document.getElementById('answer').value;
+    let question_id = localStorage.getItem("qn_id");
+
+    console.log(Answer);
+    fetch('http://127.0.0.1:5000/api/v1/questions/' + question_id + '/answers', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("access_token"),
+                'Accept': 'application/json, text/plain, */*',
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                answer: Answer
+            })
+        })
+        .then((result) => result.json())
+        .then((data) => {
+            // console.log(data)
+            if (data.msg === "An answer has been successfully added") {
+                alert(data.msg);
+                window.location.href = 'home.html'
+            } else if (data.msg === "Token has expired") {
+                alert("Your session is expired. Please log in agin to continue :)")
+                window.location.href = 'login.html'
+            } else if (data.msg === "This answer already exists") {
+                alert(data.msg)
+                    // console.log(data.msg)
+                window.location.href = 'home.html'
+            }
+
+        })
+}
