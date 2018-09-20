@@ -72,3 +72,43 @@ function getAllquestions() {
 
     .catch((err) => console.log(err))
 }
+
+// returns a question with all its answers
+function viewQuestion(qn_id) {
+
+    // console.log(qn_id)
+
+    fetch('http://127.0.0.1:5000/api/v1/questions/' + qn_id, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("access_token"),
+                'Accept': 'application/json, text/plain, */*',
+                'Content-type': 'application/json'
+            }
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            // console.log(data)
+            let output = '<h4>answers..</h4>'
+            ans = data[1]
+                // console.log(ans)
+            ans.forEach(function(qnanswer) {
+                // console.log(qnanswer.answer, qnanswer.prefered);
+                output += `
+                <ul>
+                <li><a href="editanAnswer.html?question_id=${qn_id}&answer_id=${qnanswer.ans_id}">${qnanswer.answer}(${qnanswer.prefered})</a></li>
+                </ul>
+                `
+            })
+
+            //store the qn_id as the question and its answers loads
+            localStorage.setItem("qn_id", qn_id);
+            // console.log(qn_id);
+            console.log(ans);
+            document.getElementById('asked-qn').innerHTML = `<div class="asked-qn-heading">${data[0]}</div>`
+            document.getElementById('answers-sector').innerHTML = output;
+            document.getElementById('profile-heading').innerHTML = localStorage.getItem("name");
+
+        })
+        .catch((err) => console.log(err))
+}
