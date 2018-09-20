@@ -137,7 +137,7 @@ hr {
 }
 
 .questions-div {
-    width: 45%;
+    width: 50%;
     text-align: left;
     /* border: solid; */
     margin-right: 3%;
@@ -153,7 +153,7 @@ hr {
 .question-content {
     /* display: flex; */
     /* flex-direction: column; */
-    width: 35%;
+    width: 30%;
     margin-right: 5%;
 }
 
@@ -199,6 +199,22 @@ button {
     cursor: pointer;
     font-family: courier;
     color: white;
+}
+
+.editanswerbody {
+    width: 30%;
+    margin: auto;
+}
+
+.all-quetions {
+    height: 68%;
+    overflow: auto;
+}
+
+ul.quetions {
+    list-style-type: none;
+    margin: 0;
+    padding: 1%;
 }
 
 @media (max-width:768px) {

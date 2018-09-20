@@ -23,9 +23,10 @@
         <div class="user-profile">
             <input type="submit" value="User Profile ..">
             <p class="profile-heading" id="profile-heading"></p>
-            <p><a href="qnasked.html">Qns Asked (1)</a></p>
-            <p><a href="qnanswer.html">Ans Given (2)</a> </p>
             <p><a href="home.html">All Questions</a> </p>
+            <p id=askedqns><a href="askedqns.html">My Questions</a></p>
+            <!-- <p><a href="qnanswer.html">Ans Given (2)</a> </p> -->
+
             <p id="logout"><a href="#">Log Out</a></p>
         </div>
         <div class="questions-div">
@@ -35,12 +36,14 @@
                 <button type="submit">Post Question</button>
             </form>
 
-            <div id="allQuestions">
+            <div id="allQuestions" class="all-quetions">
             </div>
         </div>
         <div class="question-content">
-            <div id="asked-qn"></div>
-            <div id="answers-sector"></div>
+            <div id="asked-qn"></div><button id="delete" type="submit">delete</button>
+            <div id="answers-sector">
+                <p>Click on a question to view or add an answer to it.</p>
+            </div>
             <form action="" id="postanswer">
                 <input type="text" id="answer" placeholder="Add an answer to this question ..." name="answer">
                 <button type="submit">Submit answer</button>
@@ -48,6 +51,7 @@
         </div>
     </div>
     <script src="scripts/questions.js"></script>
+
 </body>
 
 </html>

@@ -150,3 +150,34 @@ function postAnswer(e) {
 
         })
 }
+
+//delete a question
+document.getElementById("delete").addEventListener("click", deleteqn);
+
+function deleteqn() {
+    let qntoDelete = localStorage.getItem("qn_id");
+    console.log(qntoDelete);
+    fetch('http://127.0.0.1:5000/api/v1/questions/' + qntoDelete, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("access_token"),
+                'Accept': 'application/json, text/plain, */*',
+                'Content-type': 'application/json'
+            }
+        })
+        .then((res) => res.json())
+        .then((resdata) => {
+
+
+            if (resdata.msg === "Question successfuly deleted") {
+                console.log(resdata);
+                alert(resdata.msg);
+                window.location.href = 'home.html'
+            } else if (resdata.error === "Un-Authorised to DELETE this QN") {
+                console.log(resdata);
+                alert(resdata.error);
+                window.location.href = 'home.html'
+            }
+
+        })
+}
