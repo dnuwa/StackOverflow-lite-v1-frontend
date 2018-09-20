@@ -96,7 +96,7 @@ function viewQuestion(qn_id) {
                 // console.log(qnanswer.answer, qnanswer.prefered);
                 output += `
                 <ul>
-                <li><a href="editanAnswer.html?question_id=${qn_id}&answer_id=${qnanswer.ans_id}">${qnanswer.answer}(${qnanswer.prefered})</a></li>
+                <li><a href="update_answer.html?question_id=${qn_id}&answer_id=${qnanswer.ans_id}">${qnanswer.answer}(${qnanswer.prefered})</a></li>
                 </ul>
                 `
             })
