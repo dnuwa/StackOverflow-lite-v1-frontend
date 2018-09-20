@@ -146,6 +146,8 @@ function postAnswer(e) {
                 alert(data.msg)
                     // console.log(data.msg)
                 window.location.href = 'home.html'
+            } else {
+                alert(data.error);
             }
 
         })
