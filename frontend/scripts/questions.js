@@ -181,3 +181,14 @@ function deleteqn() {
 
         })
 }
+
+//logging out a  user
+document.getElementById("logout").addEventListener("click", Logout);
+
+function Logout() {
+    localStorage.removeItem('qn_id');
+    localStorage.removeItem('name');
+    localStorage.removeItem("access_token");
+    localStorage.removeItem('ans_id');
+    window.location.href = 'index.html';
+}
