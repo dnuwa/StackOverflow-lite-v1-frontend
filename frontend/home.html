@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StackOverflow-lite</title>
+
+
+</head>
+
+<body>
+    <header class="header">
+
+        <h1>
+            StackOverflow-lite
+        </h1>
+
+    </header>
+
+    <div class="content-wrapper">
+        <div class="user-profile">
+            <input type="submit" value="User Profile ..">
+            <p class="profile-heading" id="profile-heading"></p>
+            <p><a href="qnasked.html">Qns Asked (1)</a></p>
+            <p><a href="qnanswer.html">Ans Given (2)</a> </p>
+            <p><a href="home.html">All Questions</a> </p>
+            <p id="logout"><a href="#">Log Out</a></p>
+        </div>
+        <div class="questions-div">
+
+            <form action="" id="addquestion">
+                <input type="text" id="question" name="question" placeholder="Ask your question ..." required>
+                <button type="submit">Post Question</button>
+            </form>
+
+            <div id="allQuestions">
+            </div>
+        </div>
+        <div class="question-content">
+            <div id="asked-qn"></div>
+            <div id="answers-sector"></div>
+            <form action="" id="postanswer">
+                <input type="text" id="answer" placeholder="Add an answer to this question ..." name="answer">
+                <button type="submit">Submit answer</button>
+            </form>
+        </div>
+    </div>
+    <script src="scripts/addquestion.js"></script>
+</body>
+
+</html>

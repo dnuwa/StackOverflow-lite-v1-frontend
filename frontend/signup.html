@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StackOverflow-lite</title>
+</head>
+
+<body>
+    <header class="header">
+        <h1>
+            StackOverflow-lite
+        </h1>
+    </header>
+
+    <div class="container">
+        <div class="heading">Create your StackOverflow-lite account.</div>
+        <div class="sec-heading"> It's free and only takes a minute</div>
+        <div class="form-body">
+            <form action="login.html" id="signup">
+                <label for="dname">Dispaly Name</label>
+                <input type="text" id="dname" name="dname" placeholder="Your dispaly name.." required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email.." required>
+
+                <label for="userpassword">Password</label>
+                <input type="password" id="userpassword" name="userpassword" placeholder="********" required>
+
+                <input type="submit" value="Sign Up">
+            </form>
+            <div>
+                Already have an account? <a href="login.html">Log In</a>
+            </div>
+        </div>
+
+
+        <script>
+            document.getElementById("signup").addEventListener("submit", signUp)
+            var form = document.getElementById("signup");
+
+            function signUp(e) {
+
+                e.preventDefault();
+                let display_name = document.getElementById('dname').value;
+                let email = document.getElementById('email').value;
+                let password = document.getElementById('userpassword').value;
+
+                fetch('http://127.0.0.1:5000/api/v1/auth/signup', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            display_name: display_name,
+                            email: email,
+                            password: password
+                        })
+                    })
+                    .then((res) => res.json())
+
+                .then((data) => {
+                    console.log(data)
+                    if (data.msg === 'You  have successfully signed as ' + display_name) {
+                        alert('You  have successfully signed as ' + display_name + '!');
+                        window.location.replace('login.html');
+                    } else if (data.msg === 'This display_name is taken, choose another') {
+                        alert(display_name + " is taken. Please choose another name!");
+                    } else if (data.msg === 'An account with this email exists') {
+                        alert("An account with this (" + email + ") email exists!")
+                    } else {
+                        alert(data.msg)
+                    }
+                })
+                form.reset()
+            }
+        </script>
+    </div>
+</body>
+
+
+</html>

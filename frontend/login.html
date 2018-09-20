@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StackOverflow-lite</title>
+</head>
+
+<body>
+    <header class="header">
+        <h1>
+            StackOverflow-lite
+        </h1>
+    </header>
+
+    <div class="container">
+        <div class="heading">Welcome to StackOverflow-lite</div>
+        <div class="sec-heading"> Log in below to continue.</div>
+        <div class="form-body">
+            <form action="" id="signin">
+
+                <label for="dname">Display name</label>
+                <input type="text" id="dname" name="display_name" placeholder="Your dispaly name.." required>
+
+                <label for="userpassword">Password</label>
+                <input type="password" id="userpassword" name="userpassword" placeholder="********" required>
+
+                <input type="submit" value="Log In">
+            </form>
+            <div>
+                Don't have an account? <a href="signup.html">Sign Up</a>
+            </div>
+        </div>
+</body>
+</div>
+
+<script>
+    document.getElementById("signin").addEventListener("submit", signIn)
+
+    function signIn(e) {
+
+        e.preventDefault();
+        let display_name = document.getElementById('dname').value;
+        let password = document.getElementById('userpassword').value;
+        // console.log(display_name);
+        fetch('http://127.0.0.1:5000/api/v1/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    display_name: display_name,
+                    password: password
+                })
+            })
+            .then((res) => res.json())
+            // .then((data) => console.log(data))
+            // window.location.replace(login.html)
+            .then((data) => {
+                console.log(data)
+                if ("Token" in data) {
+                    localStorage.setItem("access_token", data.Token);
+                    localStorage.setItem("name", display_name);
+                    alert(data.msg);
+                    window.location.href = 'home.html'
+                } else {
+                    alert(data.error);
+                }
+            })
+
+    }
+</script>
+
+</body>
+
+</html>
