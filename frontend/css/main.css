@@ -225,8 +225,8 @@ ul.quetions {
         padding-top: 15px;
     }
     .user-profile {
-        width: 80%;
-        margin: 5px 10% 5px 10%;
+        width: 90%;
+        margin: auto;
     }
     .questions-div {
         width: 60%;
@@ -237,7 +237,8 @@ ul.quetions {
     .question-content {
         width: 80%;
         text-align: left;
-        margin: 5px 10% 5px 10%;
+        /* margin: 5px 10% 5px 10%; */
+        margin-left: 5%;
     }
     h1 {
         font-size: 1em;
@@ -251,6 +252,7 @@ ul.quetions {
         padding: 4%;
         font-family: courier;
         /* border: solid; */
+        margin-left: 5%;
     }
     .user-profile {
         width: 68%;
@@ -273,5 +275,9 @@ ul.quetions {
         cursor: pointer;
         font-family: courier;
         color: white;
+    }
+    .editanswerbody {
+        width: 80%;
+        margin: auto;
     }
 }

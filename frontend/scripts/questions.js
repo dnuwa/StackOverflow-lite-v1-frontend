@@ -185,7 +185,7 @@ function deleteqn() {
 }
 
 //logging out a  user
-document.getElementById("logout").addEventListener("click", Logout);
+// document.getElementById("logout").addEventListener("click", Logout);
 
 function Logout() {
     localStorage.removeItem('qn_id');

@@ -262,3 +262,25 @@ class EditAnswer(Resource):
 
         except Exception as err:
             return {'error': str(err) + "THE questionID and answerId SHOULD BE INTEGERS!"}, 406
+
+    
+    # extras
+class AllPostedQnsByUser(Resource):
+    
+    @jwt_required
+    def get(self):
+        user_id = get_jwt_identity()
+        qnsobj = DatabaseAccess()
+        resp = qnsobj.qns_to_user(user_id)
+        return resp, 200
+
+class AllPostedAnsByUser(Resource):
+    
+    @jwt_required
+    def get(self):
+        user_id = get_jwt_identity()
+        qnsobj = DatabaseAccess()
+        resp = qnsobj.qns_to_user(user_id)
+        return resp, 200
+
+
