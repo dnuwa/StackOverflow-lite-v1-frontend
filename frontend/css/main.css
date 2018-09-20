@@ -20,6 +20,10 @@ h1 {
     font-size: 2em;
 }
 
+.space {
+    margin: 10%;
+}
+
 .logo {
     width: 40%;
     margin: auto;
@@ -34,10 +38,6 @@ td {
 
 table {
     padding-left: 2%;
-}
-
-.space {
-    margin: 10%;
 }
 
 a {
@@ -126,13 +126,13 @@ hr {
 
 .user-profile {
     width: 13%;
-    padding-right: 2%;
+    padding-right: 1%;
     border: 1px solid #ccc;
     border-radius: 4px;
     text-align: inherit;
     padding: 2%;
     background-color: #f2f2f2;
-    margin-left: 3%;
+    margin-left: 2%;
     height: 20%;
 }
 
@@ -154,7 +154,8 @@ hr {
     /* display: flex; */
     /* flex-direction: column; */
     width: 30%;
-    margin-right: 5%;
+    margin-right: 3%;
+    padding-top: 2%;
 }
 
 p {
@@ -206,8 +207,13 @@ button {
     margin: auto;
 }
 
-.all-quetions {
-    height: 68%;
+.fixed-questions {
+    height: 60%;
+    overflow: auto;
+}
+
+.fixed-answers {
+    height: 40%;
     overflow: auto;
 }
 
@@ -215,6 +221,10 @@ ul.quetions {
     list-style-type: none;
     margin: 0;
     padding: 1%;
+}
+
+.answer-body {
+    padding-top: 10%;
 }
 
 @media (max-width:768px) {
@@ -231,14 +241,14 @@ ul.quetions {
     .questions-div {
         width: 60%;
         text-align: left;
-        margin: 5px 10% 5px 6%;
+        /* margin: 5px 10% 5px 6%; */
         font-size: 80%;
     }
     .question-content {
         width: 80%;
         text-align: left;
         /* margin: 5px 10% 5px 10%; */
-        margin-left: 5%;
+        margin-left: 3%;
     }
     h1 {
         font-size: 1em;
