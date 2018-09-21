@@ -45,7 +45,7 @@
         let display_name = document.getElementById('dname').value;
         let password = document.getElementById('userpassword').value;
         // console.log(display_name);
-        fetch('http://127.0.0.1:5000/api/v1/auth/login', {
+        fetch('https://stackoverflow-lite-v1-frontend.herokuapp.com/api/v1/auth/login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json, text/plain, */*',

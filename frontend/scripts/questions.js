@@ -5,7 +5,7 @@ function postQuestion(e) {
     let Question = document.getElementById('question').value;
 
     console.log(Question);
-    fetch('http://127.0.0.1:5000/api/v1/questions', {
+    fetch('https://stackoverflow-lite-v1-frontend.herokuapp.com/api/v1/questions', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("access_token"),
@@ -41,7 +41,7 @@ function postQuestion(e) {
 document.getElementById("allQuestions").addEventListener("load", getAllquestions());
 
 function getAllquestions() {
-    fetch('http://127.0.0.1:5000/api/v1/questions', {
+    fetch('https://stackoverflow-lite-v1-frontend.herokuapp.com/api/v1/questions', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("access_token"),
@@ -78,7 +78,7 @@ function viewQuestion(qn_id) {
 
     // console.log(qn_id)
 
-    fetch('http://127.0.0.1:5000/api/v1/questions/' + qn_id, {
+    fetch('https://stackoverflow-lite-v1-frontend.herokuapp.com/api/v1/questions/' + qn_id, {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("access_token"),
@@ -122,7 +122,7 @@ function postAnswer(e) {
     let question_id = localStorage.getItem("qn_id");
 
     console.log(Answer);
-    fetch('http://127.0.0.1:5000/api/v1/questions/' + question_id + '/answers', {
+    fetch('https://stackoverflow-lite-v1-frontend.herokuapp.com/api/v1/questions/' + question_id + '/answers', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("access_token"),
@@ -159,7 +159,7 @@ document.getElementById("delete").addEventListener("click", deleteqn);
 function deleteqn() {
     let qntoDelete = localStorage.getItem("qn_id");
     console.log(qntoDelete);
-    fetch('http://127.0.0.1:5000/api/v1/questions/' + qntoDelete, {
+    fetch('https://stackoverflow-lite-v1-frontend.herokuapp.com/api/v1/questions/' + qntoDelete, {
             method: 'DELETE',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("access_token"),

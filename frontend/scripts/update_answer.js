@@ -20,7 +20,7 @@ function loadInputfield() {
     let ans_id = localStorage.getItem("ans_id");
     console.log(qn_id);
     console.log(ans_id);
-    fetch('http://127.0.0.1:5000/api/v1/questions/' + qn_id + '/answers/' + ans_id + '/edit', {
+    fetch('https://stackoverflow-lite-v1-frontend.herokuapp.com/api/v1/questions/' + qn_id + '/answers/' + ans_id + '/edit', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("access_token"),
@@ -49,7 +49,7 @@ function editAnswer(e) {
     let edited_naswer = document.getElementById('answertxt').value;
 
     console.log(edited_naswer);
-    fetch('http://127.0.0.1:5000/api/v1/questions/' + qn_id + '/answers/' + ans_id + '/edit', {
+    fetch('https://stackoverflow-lite-v1-frontend.herokuapp.com/api/v1/questions/' + qn_id + '/answers/' + ans_id + '/edit', {
             method: 'PUT',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("access_token"),
@@ -83,7 +83,7 @@ function Accept() {
     let ans_id = localStorage.getItem("ans_id");
     console.log(qn_id);
     console.log(ans_id);
-    fetch('http://127.0.0.1:5000/api/v1/questions/' + qn_id + '/answers/' + ans_id + '/preferred', {
+    fetch('https://stackoverflow-lite-v1-frontend.herokuapp.com/api/v1/questions/' + qn_id + '/answers/' + ans_id + '/preferred', {
             method: 'PUT',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("access_token"),

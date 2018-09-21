@@ -208,12 +208,12 @@ button {
 }
 
 .fixed-questions {
-    height: 60%;
+    height: 80%;
     overflow: auto;
 }
 
 .fixed-answers {
-    height: 40%;
+    height: 70%;
     overflow: auto;
 }
 

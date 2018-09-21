@@ -1,7 +1,7 @@
 addEventListener("load", getAllUsersquestions);
 
 function getAllUsersquestions() {
-    fetch('http://127.0.0.1:5000/api/v1/userquestions', {
+    fetch('https://stackoverflow-lite-v1-frontend.herokuapp.com/api/v1/userquestions', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("access_token"),
