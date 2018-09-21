@@ -126,3 +126,16 @@ class DatabaseAccess:
         mark_query = "UPDATE answers SET prefered=TRUE WHERE  qn_id = %s and ans_id = %s"
         vars = qn_id, ans_id
         self.cursor.execute(mark_query, vars)
+    # extras
+
+    def qns_to_user(self, user_id):
+        query = "SELECT * FROM questions WHERE user_id = %s"
+        self.cursor.execute(query, (user_id,)) 
+        rows = self.cursor.fetchall()
+        return rows
+
+    def ans_to_user(self, user_id):
+        query = "SELECT * FROM answers WHERE user_id = %s"
+        self.cursor.execute(query, (user_id,)) 
+        rows = self.cursor.fetchall()
+        return rows
