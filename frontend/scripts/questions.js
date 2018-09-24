@@ -154,7 +154,7 @@ function postAnswer(e) {
 }
 
 //delete a question
-document.getElementById("delete").addEventListener("click", deleteqn);
+// document.getElementById("delete").addEventListener("click", deleteqn);
 
 function deleteqn() {
     let qntoDelete = localStorage.getItem("qn_id");
