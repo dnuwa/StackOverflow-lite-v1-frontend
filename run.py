@@ -4,6 +4,7 @@ from flask_jwt_extended import JWTManager
 
 # Setup the Flask-JWT-Extended extension
 app.config['JWT_SECRET_KEY'] = 'jwt-secret-string'
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = False
 jwt = JWTManager(app)
 
 api.add_resource(Users, '/auth/signup')
