@@ -1,9 +1,9 @@
 document.getElementById("editanswer").addEventListener("load", loadInputfield());
 
-var url_string = window.location.href;
-var url = new URL(url_string);
-var qn_id = url.searchParams.get("question_id");
-var ans_id = url.searchParams.get("answer_id");
+let url_string = window.location.href;
+let url = new URL(url_string);
+let qn_id = url.searchParams.get("question_id");
+let ans_id = url.searchParams.get("answer_id");
 
 localStorage.setItem("ans_id", ans_id);
 
@@ -65,14 +65,27 @@ function editAnswer(e) {
             console.log(data)
 
             if (data.msg === "you are not permited to edit this") {
-                alert(data.msg);
-                window.location.href = 'home.html'
+                swal({
+                    type: 'error',
+                    title: 'Oops',
+                    text: data.msg
+                }).then(function() {
+                    window.location.href = 'home.html'
+                })
             } else if (data.msg === "Token has expired") {
-                alert(data.msg)
-                window.location.href = 'login.html'
+                swal({
+                    text: data.msg
+                }).then(function() {
+                    window.location.href = 'login.html'
+                })
             } else if (data.msg === "Changes have been saved successfully") {
-                alert(data.msg)
-                window.location.href = 'home.html'
+                swal({
+                    type: 'success',
+                    showConfirmButton: true,
+                    text: data.msg
+                }).then(function() {
+                    window.location.href = 'home.html'
+                })
             }
         })
 }
@@ -96,14 +109,27 @@ function Accept() {
             console.log(data)
 
             if (data.msg === "Answer has been marked as prefered") {
-                alert(data.msg);
-                window.location.href = 'home.html'
+                swal({
+                    type: 'success',
+                    showConfirmButton: true,
+                    text: data.msg
+                }).then(function() {
+                    window.location.href = 'home.html'
+                })
             } else if (data.msg === "Token has expired") {
-                alert(data.msg)
-                window.location.href = 'login.html'
+                swal({
+                    text: data.msg
+                }).then(function() {
+                    window.location.href = 'login.html'
+                })
             } else if (data.msg === "You do not own this qn") {
-                alert(data.msg)
-                window.location.href = 'home.html'
+                swal({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: data.msg
+                }).then(function() {
+                    window.location.href = 'home.html'
+                })
             }
         })
 }
