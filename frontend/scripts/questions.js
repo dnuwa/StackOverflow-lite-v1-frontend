@@ -21,18 +21,31 @@ function postQuestion(e) {
             console.log(data)
             if ("Token" in data) {
                 localStorage.setItem("access_token", data.Token);
-                alert(data.msg);
-                window.location.href = 'home.html'
+
+                swal({
+                    text: data.msg
+                }).then(function() {
+                    window.location.href = 'home.html'
+                })
             } else if (data.msg === "Token has expired") {
-                alert(data.msg)
-                window.location.href = 'login.html'
+                swal({
+                    text: data.msg
+                }).then(function() {
+                    window.location.href = 'login.html'
+                })
             } else if (data.msg === "Question already exists") {
-                alert(data.msg)
-                    // console.log(data.msg)
-                window.location.href = 'home.html'
+                swal({
+                    text: data.msg
+                }).then(function() {
+                    window.location.href = 'home.html'
+                })
             } else if (data.msg === "Question has successfully added") {
-                alert("Question has been successfully added")
-                window.location.href = 'home.html'
+                swal({
+                    type: 'success',
+                    text: "Question has been successfully added"
+                }).then(function() {
+                    window.location.href = 'home.html'
+                })
             }
 
         })
@@ -137,17 +150,30 @@ function postAnswer(e) {
         .then((data) => {
             // console.log(data)
             if (data.msg === "An answer has been successfully added") {
-                alert(data.msg);
-                window.location.href = 'home.html'
+                swal({
+                    type: 'success',
+                    text: data.msg
+                }).then(function() {
+                    window.location.href = 'home.html'
+                })
             } else if (data.msg === "Token has expired") {
-                alert("Your session is expired. Please log in agin to continue :)")
-                window.location.href = 'login.html'
+                swal({
+                    text: 'Your session is expired. Please log in agin to continue :)'
+                }).then(function() {
+                    window.location.href = 'login.html'
+                })
             } else if (data.msg === "This answer already exists") {
-                alert(data.msg)
-                    // console.log(data.msg)
-                window.location.href = 'home.html'
+                swal({
+                    text: data.msg
+                }).then(function() {
+                    window.location.href = 'home.html'
+                })
             } else {
-                alert(data.error);
+                swal({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: data.error
+                })
             }
 
         })
@@ -173,12 +199,21 @@ function deleteqn() {
 
             if (resdata.msg === "Question successfuly deleted") {
                 console.log(resdata);
-                alert(resdata.msg);
-                window.location.href = 'home.html'
+                swal({
+                    text: resdata.msg
+                }).then(function() {
+                    window.location.href = 'home.html'
+                })
             } else if (resdata.error === "Un-Authorised to DELETE this QN") {
                 console.log(resdata);
-                alert(resdata.error);
-                window.location.href = 'home.html'
+                swal({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: resdata.error
+
+                }).then(function() {
+                    window.location.href = 'home.html'
+                })
             }
 
         })
@@ -192,5 +227,5 @@ function Logout() {
     localStorage.removeItem('name');
     localStorage.removeItem("access_token");
     localStorage.removeItem('ans_id');
-    window.location.href = 'index.html';
+    window.location.href = 'index.php';
 }

@@ -6,6 +6,8 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StackOverflow-lite</title>
+    <script src="scripts/sweetalert2/sweetalert2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 </head>
 
 <body>
@@ -65,14 +67,32 @@
                 .then((data) => {
                     console.log(data)
                     if (data.msg === 'You  have successfully signed as ' + display_name) {
-                        alert('You  have successfully signed as ' + display_name + '!');
-                        window.location.replace('login.html');
+                        swal({
+                            text: 'You  have successfully signed up as ' + display_name + '!'
+                        }).then(function() {
+                            window.location.replace('login.html');
+                        })
+
                     } else if (data.msg === 'This display_name is taken, choose another') {
-                        alert(display_name + " is taken. Please choose another name!");
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: display_name + " is taken. Please choose another name!"
+                        })
+
                     } else if (data.msg === 'An account with this email exists') {
-                        alert("An account with this (" + email + ") email exists!")
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: "An account with this (" + email + ") email exists!"
+                        })
+
                     } else {
-                        alert(data.msg)
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: data.msg
+                        })
                     }
                 })
                 form.reset()
